@@ -843,6 +843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 246655614}
   - component: {fileID: 246655615}
+  - component: {fileID: 246655616}
   m_Layer: 0
   m_Name: Automatic Rifle
   m_TagString: Untagged
@@ -908,6 +909,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &246655616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 246655613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53ccea075d50c04eb51b013315b147f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  fireRate: 0
+  bulletSpeed: 0
 --- !u!1001 &246727207
 Prefab:
   m_ObjectHideFlags: 0
@@ -2994,6 +3009,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1017213490}
   - component: {fileID: 1017213491}
+  - component: {fileID: 1017213492}
   m_Layer: 0
   m_Name: Semi-Automatic Rifle
   m_TagString: Untagged
@@ -3059,6 +3075,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1017213492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1017213489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53ccea075d50c04eb51b013315b147f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  fireRate: 0
+  bulletSpeed: 0
 --- !u!1001 &1024697540
 Prefab:
   m_ObjectHideFlags: 0
@@ -4518,6 +4548,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1579224352}
   - component: {fileID: 1579224353}
+  - component: {fileID: 1579224355}
+  - component: {fileID: 1579224354}
   m_Layer: 0
   m_Name: Handgun
   m_TagString: Untagged
@@ -4583,6 +4615,34 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1579224354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1579224351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53ccea075d50c04eb51b013315b147f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  fireRate: 0
+  bulletSpeed: 0
+--- !u!114 &1579224355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1579224351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53ccea075d50c04eb51b013315b147f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  fireRate: 0
+  bulletSpeed: 0
 --- !u!1001 &1585507466
 Prefab:
   m_ObjectHideFlags: 0
