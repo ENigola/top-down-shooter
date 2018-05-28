@@ -898,7 +898,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2095648749
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: bab4acffa660180489c40ad11798fb56, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -917,12 +917,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 246655613}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53ccea075d50c04eb51b013315b147f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8520f23ebf77393469572d4f526bef18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  fireRate: 0
-  bulletSpeed: 0
+  bulletPrefab: {fileID: 1346956634135236, guid: ec3bbbe52ccd80b46aadedfa68228d42,
+    type: 2}
+  damage: 8
+  fireRate: 5
+  bulletSpeed: 15
 --- !u!1001 &246727207
 Prefab:
   m_ObjectHideFlags: 0
@@ -3064,7 +3066,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2095648749
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 62bda0ffa94c9c748926eefabe1f64e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3083,12 +3085,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1017213489}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53ccea075d50c04eb51b013315b147f, type: 3}
+  m_Script: {fileID: 11500000, guid: 689a40a2e7c00414e946dac5f817ceb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  fireRate: 0
-  bulletSpeed: 0
+  bulletPrefab: {fileID: 1346956634135236, guid: ec3bbbe52ccd80b46aadedfa68228d42,
+    type: 2}
+  damage: 25
+  fireRate: 0.8
+  bulletSpeed: 20
 --- !u!1001 &1024697540
 Prefab:
   m_ObjectHideFlags: 0
@@ -4548,7 +4552,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1579224352}
   - component: {fileID: 1579224353}
-  - component: {fileID: 1579224355}
   - component: {fileID: 1579224354}
   m_Layer: 0
   m_Name: Handgun
@@ -4604,7 +4607,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2095648749
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 9bed2f320d9ec014b8fbe572994f0954, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4623,26 +4626,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1579224351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53ccea075d50c04eb51b013315b147f, type: 3}
+  m_Script: {fileID: 11500000, guid: 689a40a2e7c00414e946dac5f817ceb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  fireRate: 0
-  bulletSpeed: 0
---- !u!114 &1579224355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1579224351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53ccea075d50c04eb51b013315b147f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  fireRate: 0
-  bulletSpeed: 0
+  bulletPrefab: {fileID: 1346956634135236, guid: ec3bbbe52ccd80b46aadedfa68228d42,
+    type: 2}
+  damage: 10
+  fireRate: 2
+  bulletSpeed: 10
 --- !u!1001 &1585507466
 Prefab:
   m_ObjectHideFlags: 0
@@ -5122,7 +5113,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2095648749
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e1feec43944304f4f980091a32b9382d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
