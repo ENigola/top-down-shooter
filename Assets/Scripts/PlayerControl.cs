@@ -7,7 +7,7 @@ public class PlayerControl : MonoBehaviour {
 	private int currentWeaponIndex;
 	public float moveSpeed;
 
-	private void Start() {
+	void Start() {
 		currentWeaponIndex = 0;
 	}
 
@@ -20,11 +20,11 @@ public class PlayerControl : MonoBehaviour {
 		Vector2 lookDirection = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 		transform.right = lookDirection;
 		// Weapon switching
-		if (Input.GetAxis("Select 1") != 0f) {
+		if (Input.GetButtonDown("Select 1")) {
 			currentWeaponIndex = 0;
-		} else if (Input.GetAxis("Select 2") != 0f) {
+		} else if (Input.GetButtonDown("Select 2")) {
 			currentWeaponIndex = 1;
-		} else if (Input.GetAxis("Select 3") != 0f) {
+		} else if (Input.GetButtonDown("Select 3")) {
 			currentWeaponIndex = 2;
 		}
 		int i = 0;
@@ -36,5 +36,23 @@ public class PlayerControl : MonoBehaviour {
 			}
 			i++;
 		}
+		// Shooting
+		if (Input.GetButtonDown("Fire")) {
+			GetCurrentGun().StartShooting();
+		}
+		if (Input.GetButtonUp("Fire")) {
+			GetCurrentGun().StopShooting();
+		}
+	}
+
+	private Gun GetCurrentGun() {
+		int i = 0;
+		foreach (Transform child in transform) {
+			if (currentWeaponIndex == i) {
+				return child.gameObject.GetComponent<Gun>();
+			}
+			i++;
+		}
+		return null;
 	}
 }
