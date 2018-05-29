@@ -981,6 +981,8 @@ MonoBehaviour:
   damage: 6
   fireRate: 5
   bulletSpeed: 15
+  clipSize: 25
+  reloadTime: 2.5
 --- !u!1001 &246727207
 Prefab:
   m_ObjectHideFlags: 0
@@ -3382,9 +3384,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1346956634135236, guid: ec3bbbe52ccd80b46aadedfa68228d42,
     type: 2}
-  damage: 25
+  damage: 35
   fireRate: 0.8
   bulletSpeed: 20
+  clipSize: 4
+  reloadTime: 3
 --- !u!1001 &1024697540
 Prefab:
   m_ObjectHideFlags: 0
@@ -5080,6 +5084,8 @@ MonoBehaviour:
   damage: 10
   fireRate: 2
   bulletSpeed: 10
+  clipSize: 8
+  reloadTime: 2
 --- !u!1001 &1585507466
 Prefab:
   m_ObjectHideFlags: 0
@@ -5546,10 +5552,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1826797967}
   - component: {fileID: 1826797966}
-  - component: {fileID: 1826797968}
-  - component: {fileID: 1826797969}
   - component: {fileID: 1826797970}
   - component: {fileID: 1826797971}
+  - component: {fileID: 1826797968}
+  - component: {fileID: 1826797969}
+  - component: {fileID: 1826797972}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5676,6 +5683,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1826797972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1826797965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fff155bebb8bc048bfb4963d4f068ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1346956634135236, guid: ec3bbbe52ccd80b46aadedfa68228d42, type: 2}
+  size: 20
 --- !u!1001 &1837217547
 Prefab:
   m_ObjectHideFlags: 0

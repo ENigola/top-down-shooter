@@ -19,9 +19,13 @@ public class Bullet : MonoBehaviour {
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision) {
+		if (!gameObject.activeSelf) {
+			// To fix double collision problems
+			return;
+		}
 		if (collision.gameObject.tag == "Enemy") {
 			collision.gameObject.GetComponent<Enemy>().DoDamage(damage);
 		}
-		Destroy(gameObject);
+		GameObject.Find("Player").GetComponent<Pool>().ReleaseObject(gameObject);
 	}
 }

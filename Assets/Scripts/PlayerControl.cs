@@ -43,6 +43,10 @@ public class PlayerControl : MonoBehaviour {
 		if (Input.GetButtonUp("Fire")) {
 			GetCurrentGun().StopShooting();
 		}
+		// Reloading
+		if (Input.GetButtonDown("Reload")) {
+			GetCurrentGun().Reload();
+		}
 	}
 
 	private Gun GetCurrentGun() {
