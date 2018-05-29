@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
-	private float damage;
+	private int damage;
 	private float speed;
 
 	void Update () {
@@ -14,13 +14,14 @@ public class Bullet : MonoBehaviour {
 		this.speed = speed;
 	}
 
-	public void SetDamage(float damage) {
+	public void SetDamage(int damage) {
 		this.damage = damage;
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision) {
 		if (collision.gameObject.tag == "Enemy") {
-			// TODO: do damage
+			collision.gameObject.GetComponent<Enemy>().DoDamage(damage);
 		}
+		Destroy(gameObject);
 	}
 }

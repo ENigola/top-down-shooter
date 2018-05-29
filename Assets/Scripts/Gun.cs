@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Gun : MonoBehaviour {
 	public GameObject bulletPrefab;
-	public float damage;
+	public int damage;
 	public float fireRate; // Shots per second
 	public float bulletSpeed;
 	private float gunEndOffset = 0.7f;
