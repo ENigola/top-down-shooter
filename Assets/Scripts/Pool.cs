@@ -17,7 +17,6 @@ public class Pool : MonoBehaviour{
 		pool = new List<GameObject>();
 		for (int i = 0; i < size; i++) {
 			GameObject go = Instantiate(prefab);
-			go.name = "B" + i;
 			go.SetActive(false);
 			pool.Add(go);
 		}

@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour {
 
-	private int currentWeaponIndex;
 	public float moveSpeed;
+    public int maxHp;
+
+    private int currentWeaponIndex;
+    private int currentHp;
+    private bool invluneralble;
+
+    GameObject healthBar;
 
 	void Start() {
 		currentWeaponIndex = 0;
-	}
+        currentHp = maxHp;
+        healthBar = GameObject.Find("HealthBar");
+        invluneralble = false;
+    }
 
 	void Update () {
 		// Movement
@@ -59,4 +68,33 @@ public class PlayerControl : MonoBehaviour {
 		}
 		return null;
 	}
+
+    public void TakeDamage(int damage)
+    {
+        if (invluneralble) return;
+
+        // Invulnerability period
+        StartCoroutine(GoInvulnerable());
+        
+        currentHp -= damage;
+        Debug.Log("HP: " + currentHp);
+
+        // Show change on the HP bar
+        float healthBarLength = (float)((float)currentHp / (float)maxHp * 200.0);
+        healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(healthBarLength, 25);
+
+        if (currentHp <= 0)
+        { 
+            currentHp = 0;
+            Debug.Log("you died");
+            //TODO death
+        }
+    }
+
+    private IEnumerator GoInvulnerable()
+    {
+        invluneralble = true;
+        yield return new WaitForSeconds(.25f);
+        invluneralble = false;
+    }
 }
