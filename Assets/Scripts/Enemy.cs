@@ -112,7 +112,7 @@ public class Enemy : MonoBehaviour {
 
     private void Die() {
 		if (GameObject.Find("Enemies").transform.childCount == 1) {
-			// TODO: Level complete
+			GameObject.Find("Game UI Canvas").GetComponent<GameUI>().ShowLevelComplete();
 		}
 		Destroy(gameObject);
 	}

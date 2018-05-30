@@ -91,9 +91,8 @@ public class PlayerControl : MonoBehaviour {
         if (currentHp <= 0)
         { 
             currentHp = 0;
-            Debug.Log("you died");
-            //TODO death
-        }
+			GameObject.Find("Game UI Canvas").GetComponent<GameUI>().ShowPlayerDead();
+		}
     }
 
     private IEnumerator GoInvulnerable()
