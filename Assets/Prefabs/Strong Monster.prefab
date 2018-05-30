@@ -230,8 +230,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 250
-  moveSpeed: 3
+  moveSpeed: 1
   damage: 50
+  player: {fileID: 0}
 --- !u!212 &212956345844656640
 SpriteRenderer:
   m_ObjectHideFlags: 1

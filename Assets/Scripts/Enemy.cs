@@ -20,6 +20,9 @@ public class Enemy : MonoBehaviour {
         chasing = false;
         randomWalking = false;
         randomTimeout = false;
+		if (player == null) {
+			player = GameObject.Find("Player");
+		}
 	}
 
 	private void Update() {
