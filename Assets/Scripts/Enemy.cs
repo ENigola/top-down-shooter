@@ -9,12 +9,17 @@ public class Enemy : MonoBehaviour {
 
 	private int currentHp;
     private bool chasing;
+    private bool randomWalking;
+    private bool randomTimeout;
+    private Vector2 randomDirection;
 
     public GameObject player;
 
 	private void Start() {
 		currentHp = maxHp;
         chasing = false;
+        randomWalking = false;
+        randomTimeout = false;
 	}
 
 	private void Update() {
@@ -44,21 +49,35 @@ public class Enemy : MonoBehaviour {
             // Movement towards player
             transform.Translate(new Vector2(0, moveSpeed) * chaseY * Time.deltaTime, Space.World);
             transform.Translate(new Vector2(moveSpeed, 0) * chaseX * Time.deltaTime, Space.World);
+            transform.right = player.transform.position - transform.position;
         }
         else
         {
             // If enemy can see the player, start chasing the player
-            Debug.Log("Raycast");
             RaycastHit2D hit = Physics2D.Raycast(transform.position, (player.transform.position - transform.position));
             if (hit.collider != null)
             {
-                Debug.Log(hit.transform);
-                if (hit.transform == player.transform)
+                if (hit.transform == player.transform) //TODO Maybe see through other enemies?
                 {
                     chasing = true;
                 }
             }
-        } // TODO ilmselt peaks midagi tegema ka siis kui ei chase'i
+
+            // Walk around randomly
+            if (!randomWalking && !randomTimeout)
+            {
+                randomDirection = Random.insideUnitCircle;
+                randomDirection.Normalize();
+                StartCoroutine(WalkInRandomDirectionTimer());
+            }
+            else if (randomWalking)
+            {
+                transform.Translate(new Vector2(0, moveSpeed/2f) * randomDirection.y * Time.deltaTime, Space.World);
+                transform.Translate(new Vector2(moveSpeed/2f, 0) * randomDirection.x * Time.deltaTime, Space.World);
+                transform.right = randomDirection;
+            }
+
+        } 
 
     }
 
@@ -91,4 +110,14 @@ public class Enemy : MonoBehaviour {
     private void Die() {
 		Destroy(gameObject);
 	}
+
+    private IEnumerator WalkInRandomDirectionTimer()
+    {
+        randomWalking = true;
+        yield return new WaitForSeconds(Random.Range(0.0f, 1.0f) * 5);
+        randomTimeout = true;
+        randomWalking = false;
+        yield return new WaitForSeconds(Random.Range(0.0f, 1.0f) * 5);
+        randomTimeout = false;
+    }
 }

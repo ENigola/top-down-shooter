@@ -77,7 +77,6 @@ public class PlayerControl : MonoBehaviour {
         StartCoroutine(GoInvulnerable());
         
         currentHp -= damage;
-        Debug.Log("HP: " + currentHp);
 
         // Show change on the HP bar
         float healthBarLength = (float)((float)currentHp / (float)maxHp * 200.0);
