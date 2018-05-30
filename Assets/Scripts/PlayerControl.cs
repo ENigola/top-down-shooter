@@ -10,14 +10,16 @@ public class PlayerControl : MonoBehaviour {
     private int currentWeaponIndex;
     private int currentHp;
     private bool invluneralble;
+	private float levelStartTime;
 
     GameObject healthBar;
 
 	void Start() {
 		currentWeaponIndex = 0;
         currentHp = maxHp;
-        healthBar = GameObject.Find("HealthBar");
+        healthBar = GameObject.Find("HealthBarFG");
         invluneralble = false;
+		levelStartTime = Time.realtimeSinceStartup;
     }
 
 	void Update () {
@@ -58,7 +60,11 @@ public class PlayerControl : MonoBehaviour {
 		}
 	}
 
-	private Gun GetCurrentGun() {
+	public float GetLevelStartTime() {
+		return levelStartTime;
+	}
+
+	public Gun GetCurrentGun() {
 		int i = 0;
 		foreach (Transform child in transform) {
 			if (currentWeaponIndex == i) {

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Gun : MonoBehaviour {
@@ -14,7 +13,6 @@ public abstract class Gun : MonoBehaviour {
 	protected float lastFireTime = -1000;
 	private int clipLeft;
 	private bool isReloading = false;
-	private float reloadStart;
 
 	private void Awake() {
 		clipLeft = clipSize;
@@ -25,9 +23,6 @@ public abstract class Gun : MonoBehaviour {
 	public abstract void StopShooting();
 
 	protected void TryToFire() {
-		if (isReloading) {
-			CheckReload();
-		}
 		if (isReloading) {
 			return;
 		}
@@ -56,19 +51,19 @@ public abstract class Gun : MonoBehaviour {
 	
 	public void Reload() {
 		if (!isReloading) {
-			reloadStart = Time.realtimeSinceStartup;
-			isReloading = true;
+			StartCoroutine(ReloadCoroutine());
 		}
 	}
 
-	private void CheckReload() {
-		if (Time.realtimeSinceStartup - reloadStart > reloadTime) {
-			clipLeft = clipSize;
-			isReloading = false;
-		}
+	private IEnumerator ReloadCoroutine() {
+		isReloading = true;
+		yield return new WaitForSeconds(reloadTime);
+		clipLeft = clipSize;
+		isReloading = false;
 	}
 
 	private void OnDisable() {
+		StopCoroutine(ReloadCoroutine());
 		isReloading = false;
 		StopShooting();
 	}
@@ -77,5 +72,13 @@ public abstract class Gun : MonoBehaviour {
 		if (clipLeft == 0) {
 			Reload();
 		}
+	}
+
+	public int GetClipLeft() {
+		return clipLeft;
+	}
+
+	public bool GetIsReloading() {
+		return isReloading;
 	}
 }

@@ -111,6 +111,9 @@ public class Enemy : MonoBehaviour {
     }
 
     private void Die() {
+		if (GameObject.Find("Enemies").transform.childCount == 1) {
+			// TODO: Level complete
+		}
 		Destroy(gameObject);
 	}
 
