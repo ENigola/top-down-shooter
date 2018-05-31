@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
 
 	private int currentHp;
     private bool chasing;
+    private bool playerEscaped;
     private bool randomWalking;
     private bool randomTimeout;
     private Vector2 randomDirection;
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour {
         chasing = false;
         randomWalking = false;
         randomTimeout = false;
+        playerEscaped = false;
         if (player == null) {
 			player = GameObject.Find("Player");
 		}
@@ -47,6 +49,26 @@ public class Enemy : MonoBehaviour {
             chaseX = -1;
         }
 
+        // If enemy can see the player, start chasing the player
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, (player.transform.position - transform.position), Mathf.Infinity, ~(1 << 10));
+        if (hit.collider != null)
+        {
+            if (hit.transform == player.transform) 
+            {
+                chasing = true;
+                playerEscaped = false;
+                StopAllCoroutines();
+                randomTimeout = false;
+                randomWalking = false;
+            }
+            // If enemy loses sight of player lose interest (this is so that enemies wouldn't get permastuck behind a wall)
+            else if (chasing && !playerEscaped)
+            {
+                playerEscaped = true;
+                StartCoroutine(LoseInterest());
+            }
+        }
+
         if (chasing)
         {
             // Movement towards player
@@ -54,18 +76,8 @@ public class Enemy : MonoBehaviour {
             transform.Translate(new Vector2(moveSpeed, 0) * chaseX * Time.deltaTime, Space.World);
             transform.right = player.transform.position - transform.position;
         }
-        else
-        {
-            // If enemy can see the player, start chasing the player
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, (player.transform.position - transform.position), Mathf.Infinity, ~(1 << 10));
-            if (hit.collider != null)
-            {
-                if (hit.transform == player.transform) 
-                {
-                    chasing = true;
-                }
-            }
-
+        else 
+        { 
             // Walk around randomly
             if (!randomWalking && !randomTimeout)
             {
@@ -125,5 +137,11 @@ public class Enemy : MonoBehaviour {
         randomWalking = false;
         yield return new WaitForSeconds(Random.Range(0.0f, 1.0f) * 5);
         randomTimeout = false;
+    }
+
+    private IEnumerator LoseInterest()
+    {
+        yield return new WaitForSeconds(10);
+        chasing = false;
     }
 }
