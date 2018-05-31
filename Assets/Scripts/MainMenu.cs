@@ -20,10 +20,4 @@ public class MainMenu : MonoBehaviour {
     {
         SceneManager.LoadScene(level);
     }
-
-    public void Help()
-    {
-        Debug.Log("HELP ME!");
-    }
-
 }
