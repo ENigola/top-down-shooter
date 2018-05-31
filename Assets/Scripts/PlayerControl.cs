@@ -12,11 +12,16 @@ public class PlayerControl : MonoBehaviour {
     private bool invluneralble;
 	private float levelStartTime;
 
+    private bool semiAutomaticRifleUnlocked;
+    private bool automaticRifleUnlocked;
+
     GameObject healthBar;
 
 	void Start() {
 		currentWeaponIndex = 0;
         currentHp = maxHp;
+        semiAutomaticRifleUnlocked = false;
+        automaticRifleUnlocked = false;
         healthBar = GameObject.Find("HealthBarFG");
         invluneralble = false;
 		levelStartTime = Time.realtimeSinceStartup;
@@ -33,9 +38,9 @@ public class PlayerControl : MonoBehaviour {
 		// Weapon switching
 		if (Input.GetButtonDown("Select 1")) {
 			currentWeaponIndex = 0;
-		} else if (Input.GetButtonDown("Select 2")) {
+		} else if (Input.GetButtonDown("Select 2") && semiAutomaticRifleUnlocked) {
 			currentWeaponIndex = 1;
-		} else if (Input.GetButtonDown("Select 3")) {
+		} else if (Input.GetButtonDown("Select 3") && automaticRifleUnlocked) {
 			currentWeaponIndex = 2;
 		}
 		int i = 0;
@@ -63,6 +68,18 @@ public class PlayerControl : MonoBehaviour {
 	public float GetLevelStartTime() {
 		return levelStartTime;
 	}
+
+    public void UnlockGun(int gunId)
+    {
+        if (gunId == 2)
+        {
+            semiAutomaticRifleUnlocked = true;
+        }
+        else if (gunId == 3)
+        {
+            automaticRifleUnlocked = true;
+        }
+    }
 
 	public Gun GetCurrentGun() {
 		int i = 0;

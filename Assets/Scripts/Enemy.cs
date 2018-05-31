@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour {
         chasing = false;
         randomWalking = false;
         randomTimeout = false;
-		if (player == null) {
+        if (player == null) {
 			player = GameObject.Find("Player");
 		}
 	}
@@ -57,10 +57,10 @@ public class Enemy : MonoBehaviour {
         else
         {
             // If enemy can see the player, start chasing the player
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, (player.transform.position - transform.position));
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, (player.transform.position - transform.position), Mathf.Infinity, ~(1 << 10));
             if (hit.collider != null)
             {
-                if (hit.transform == player.transform) //TODO Maybe see through other enemies?
+                if (hit.transform == player.transform) 
                 {
                     chasing = true;
                 }

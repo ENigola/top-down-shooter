@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4215071097438086}
   - component: {fileID: 70240715486875854}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Righ tHand Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4638848760183378}
   - component: {fileID: 70765924422489888}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Left Hand Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4475847093856672}
   - component: {fileID: 58298991090231942}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 50828953600732504}
   - component: {fileID: 66728294432125024}
   - component: {fileID: 114079268981582118}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Simple Monster
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -246,7 +246,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
